@@ -7,6 +7,7 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { ThemeProvider } from "next-themes";
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { hotjar } from "react-hotjar";
 
 import { AnalyticsWrapper } from "@/src/components/Analytics";
@@ -52,6 +53,12 @@ export default function RootLayout({
         content="https://www.askanonym.com/api/og"
       ></meta>
 
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6495286852739288"
+        crossOrigin="anonymous"
+      ></script>
+
       <head />
       <body
         className={`${inter.className} h-full bg-gray-100 dark:bg-slate-900`}
@@ -59,6 +66,7 @@ export default function RootLayout({
         <SessionContextProvider supabaseClient={supabaseClient}>
           <ThemeProvider attribute="class">
             <Navbar />
+            <Toaster position="top-center" />
             {children}
             <Footer />
             <AnalyticsWrapper />
